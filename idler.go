@@ -1,7 +1,6 @@
 package idler
 
-type Idle struct {
-}
+type Idle struct{}
 
 func (f *Idle) GetIdleTime() float64 {
 	if f == nil {
