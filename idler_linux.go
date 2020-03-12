@@ -5,7 +5,6 @@ package idler
 // #cgo LDFLAGS: -lXss -lX11
 // #include <X11/extensions/scrnsaver.h>
 import "C"
-import "fmt"
 
 func (f *Idle) getIdleTime() float64 {
 	var info *C.XScreenSaverInfo
