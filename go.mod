@@ -1,4 +1,4 @@
-module github.com/alexrett/go-idler
+module github.com/alexrett/idler
 
 go 1.14
 
