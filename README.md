@@ -2,8 +2,6 @@
 
 Golang implementation of cross platform user idle timer
 
-Return number seconds of idle
-
 Support Mac OS X, Linux and Windows platforms
 
 MacOS dependency
