@@ -18,8 +18,6 @@ var (
 	}
 )
 
-// todo Нужно проверить, ибо винды нет, возможно так это не работает;
-// Для подсказки смотри мое прошлое решение - https://github.com/Allexin/TrackYourTime/issues/66#issue-142088869
 func (f *Idle) getIdleTime() float64 {
 	lastInputInfo.cbSize = uint32(unsafe.Sizeof(lastInputInfo))
 	currentTickCount, _, _ := getTickCount.Call()
@@ -27,5 +25,5 @@ func (f *Idle) getIdleTime() float64 {
 	if r1 == 0 {
 		return 0
 	}
-	return float64(uint32(currentTickCount) - lastInputInfo.dwTime)
+	return float64(uint32(uint32(currentTickCount)-lastInputInfo.dwTime) / 1000)
 }
