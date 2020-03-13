@@ -18,12 +18,12 @@ var (
 	}
 )
 
-func (f *Idle) getIdleTime() float64 {
+func (f *Idle) getIdleTime() int {
 	lastInputInfo.cbSize = uint32(unsafe.Sizeof(lastInputInfo))
 	currentTickCount, _, _ := getTickCount.Call()
-	r1, _, _ := getLastInputInfo.Call(uintptr(unsafe.Pointer(&lastInputInfo)))
-	if r1 == 0 {
+	param, _, _ := getLastInputInfo.Call(uintptr(unsafe.Pointer(&lastInputInfo)))
+	if param == 0 {
 		return 0
 	}
-	return float64(uint32(uint32(currentTickCount)-lastInputInfo.dwTime) / 1000)
+	return int(uint32(uint32(currentTickCount)-lastInputInfo.dwTime) / 1000)
 }

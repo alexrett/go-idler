@@ -1,20 +1,31 @@
-# GO-IDLER (Work In Progress) 
+# Package "IDLER" (CGO)
 
-Реализация кроссплатформенного метода для получение значения Idle таймера системы
-Возвращает кол-во секунд простоя системы
+Golang implementation of cross platform user idle timer
 
-Зависимости для сборки под MacOS
+Return number seconds of idle
+
+Support Mac OS X, Linux and Windows platforms
+
+MacOS dependency
 ```
 xcode-select --install
 git go gcc
 ```
 
-Зависимости для сборки под linux
+Linux dependency
 ```
 gcc git go libxss-dev
 ```
 
-Зависимости для сборки под Windows
+Windows dependency
 ```
 go git gcc (tdm-gcc)
+```
+
+## How to usage
+
+https://github.com/alexrett/idler-app
+```go
+i := idler.Idle{}
+i.GetIdleTime() // int 
 ```

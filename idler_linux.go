@@ -6,7 +6,7 @@ package idler
 // #include <X11/extensions/scrnsaver.h>
 import "C"
 
-func (f *Idle) getIdleTime() float64 {
+func (f *Idle) getIdleTime() int {
 	var info *C.XScreenSaverInfo
 	var display *C.Display = C.XOpenDisplay(C.CString(""))
 	info = C.XScreenSaverAllocInfo()
@@ -19,5 +19,5 @@ func (f *Idle) getIdleTime() float64 {
 	var idleTime uint32
 	idleTime = uint32(info.idle)
 
-	return float64(idleTime / 1000)
+	return int(idleTime / 1000)
 }

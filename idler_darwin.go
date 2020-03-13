@@ -6,6 +6,6 @@ package idler
 // #include <CoreGraphics/CoreGraphics.h>
 import "C"
 
-func (f *Idle) getIdleTime() float64 {
-	return float64(C.CGEventSourceSecondsSinceLastEventType(C.kCGEventSourceStateHIDSystemState, C.kCGAnyInputEventType))
+func (f *Idle) getIdleTime() int {
+	return int(C.CGEventSourceSecondsSinceLastEventType(C.kCGEventSourceStateHIDSystemState, C.kCGAnyInputEventType))
 }
