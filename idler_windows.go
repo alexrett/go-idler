@@ -21,9 +21,11 @@ var (
 func (f *Idle) getIdleTime() int {
 	lastInputInfo.cbSize = uint32(unsafe.Sizeof(lastInputInfo))
 	currentTickCount, _, _ := getTickCount.Call()
+
 	param, _, _ := getLastInputInfo.Call(uintptr(unsafe.Pointer(&lastInputInfo)))
 	if param == 0 {
 		return 0
 	}
+
 	return int(uint32(uint32(currentTickCount)-lastInputInfo.dwTime) / 1000)
 }

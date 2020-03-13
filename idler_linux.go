@@ -7,17 +7,15 @@ package idler
 import "C"
 
 func (f *Idle) getIdleTime() int {
-	var info *C.XScreenSaverInfo
+	var info *C.XScreenSaverInfo = C.XScreenSaverAllocInfo()
 	var display *C.Display = C.XOpenDisplay(C.CString(""))
-	info = C.XScreenSaverAllocInfo()
+
 	defaultRootWindow := C.XDefaultRootWindow(display)
 	if int(defaultRootWindow) == -1 {
 		return 0
 	}
+
 	C.XScreenSaverQueryInfo(display, C.Drawable(defaultRootWindow), info)
 
-	var idleTime uint32
-	idleTime = uint32(info.idle)
-
-	return int(idleTime / 1000)
+	return int(uint32(info.idle) / 1000)
 }
