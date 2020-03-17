@@ -16,6 +16,8 @@ func (f *Idle) getIdleTime() int {
 	}
 
 	C.XScreenSaverQueryInfo(display, C.Drawable(defaultRootWindow), info)
-
+	
+	C.XCloseDisplay(display)
+	
 	return int(uint32(info.idle) / 1000)
 }
